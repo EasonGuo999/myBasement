@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 540px;
+            height: 630px;
+            background-color: #bfa;
+            border: 15px solid black;
+            margin: 140px auto;
+            border-radius: 30px;
+        }
+
+        #stage {
+            width: 465px;
+            height: 465px;
+            border: 3px solid black;
+            margin: 25px auto;
+            position: relative;
+        }
+
+        #food {
+            width: 15px;
+            height: 15px;
+            position: absolute;
+            top: 150px;
+            left: 150px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #food>div {
+            width: 6.5px;
+            height: 6.5px;
+            background-color: #000;
+            transform: rotate(45deg)
+        }
+
+        #snake>div {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: #000;
+            border: 1px solid #bfa;
+            top: 0;
+            left: 0;
+        }
+
+        #statistics {
+            display: flex;
+            justify-content: space-between;
+            width: 456px;
+            height: 30px;
+            margin: 45px auto;
+            font: 25px bold Courier;
+        }
+    </style>
+
+    <script>
+        window.addEventListener('load', function () {
+            const snake = document.getElementById('snake')
+            const snakes = snake.getElementsByTagName('div')
+            const food = document.getElementById('food')
+            const score=document.getElementById('score')
+            const level=document.getElementById('level')
+            let dir
+            let oneTime=true
+            let counterScore=0
+            let counterLevel=1
+            function change(){
+                food.style.top=Math.floor(Math.random()*31)*15+'px'
+                food.style.left=Math.floor(Math.random()*31)*15+'px'
+            }
+            change()
+
+            keyArr = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight']
+            document.addEventListener('keydown', (event) => {
+                if (oneTime && keyArr.includes(event.key)) {
+                    if(snakes.length<2){
+                        dir = event.key
+                    }else if(dir==='ArrowUp' && event.key != 'ArrowDown'){
+                        dir=event.key
+                    }else if(dir==='ArrowDown' && event.key != 'ArrowUp'){
+                        dir=event.key
+                    }
+                    else if(dir==='ArrowLeft' && event.key != 'ArrowRight'){
+                        dir=event.key
+                    }
+                    else if(dir==='ArrowRight' && event.key != 'ArrowLeft'){
+                        dir=event.key
+                    }
+                }
+                oneTime=false
+                
+            })
+
+          
+            setTimeout(function move(){
+                const head = snakes[0]
+                let x=head.offsetLeft
+                let y=head.offsetTop
+                    switch (dir) {
+                        case 'ArrowUp':
+                        y-=15
+                           break
+                        case 'ArrowDown':
+                        y+=15
+                            break
+                        case 'ArrowLeft':
+                        x-=15
+                            break
+                        case 'ArrowRight':
+                        x+=15
+                            break
+                    }
+
+                    if(head.offsetTop===food.offsetTop && head.offsetLeft===food.offsetLeft){
+                        snake.insertAdjacentHTML('beforeend','<div></div>')
+                        change( )
+                        counterScore+=100
+                        score.textContent=`SCORE:${counterScore}`
+                        if(counterScore % 1000 ===0){
+                            counterLevel++
+                            level.textContent=`LEVEL:${counterLevel}`
+                        }
+                    }
+                    const tail=snakes[snakes.length-1]
+                    tail.style.top=y+'px'
+                    tail.style.left=x+'px'
+                    snake.insertAdjacentElement('afterbegin',tail)
+
+                    if(x<0 || y<0 || x>450 || y>450){
+                        return
+                    }
+                    for(let i=1;i<snakes.length;i++){
+                        if(snakes[i].offsetTop===y && snakes[i].offsetLeft===x){
+                            return
+                        }
+                    }
+                    oneTime=true
+                    setTimeout(move,300-(counterLevel-1)*25)
+                },300-(counterLevel-1)*25)
+
+
+        })
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div id="stage">
+            <div id="snake">
+                <div></div>
+            </div>
+            <div id="food">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div id="statistics">
+            <div id="score">
+                SCORE:0
+            </div>
+            <div id="level">
+                LEVEL:1
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
