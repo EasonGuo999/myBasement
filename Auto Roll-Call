@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+
+    <style>
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            list-style: none;
+
+            text-decoration: none;
+
+        }
+
+
+
+        #topbar {
+
+            position: relative;
+
+            height: 150px;
+
+            background-color: rgba(0, 60, 130, 1);
+
+        }
+
+
+
+        #topbar a:first-child {
+
+            width: 100px;
+
+            height: 71px;
+
+            position: absolute;
+
+            top: 0;
+
+            bottom: 0;
+
+            margin: auto 0;
+
+            left: 150px;
+
+        }
+
+
+
+        #topbar a:last-child {
+
+            position: absolute;
+
+            color: white;
+
+            top: 40px;
+
+            left: 300px;
+
+            font-size: 30px;
+
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+
+        }
+
+
+
+        #topbar .letter {
+
+            font-size: 16px;
+
+        }
+
+
+
+        #topbar img {
+
+            width: 100px;
+
+            border-radius: 50%;
+
+        }
+
+
+
+        #container {
+
+            height: 666px;
+
+            position: relative;
+
+        }
+
+
+
+        li {
+
+            position: absolute;
+
+        }
+
+
+
+        #container img {
+
+            width: 1000px;
+
+            height: 666px;
+
+        }
+
+
+
+        .topImg {
+
+            z-index: 1;
+
+        }
+
+
+
+        #prevButton {
+
+            position: absolute;
+
+            height: 69px;
+
+            width: 41px;
+
+            top: 0;
+
+            bottom: 0;
+
+            left: 10px;
+
+            margin: auto 0;
+
+            border: 0 solid white;
+
+            background-color: transparent;
+
+            z-index: 2;
+
+        }
+
+
+
+        #prevButton a {
+
+            font-size: 80px;
+
+            color: white;
+
+            opacity: .7;
+
+        }
+
+
+
+        #prevButton a:hover {
+
+            opacity: 1;
+
+        }
+
+
+
+        #nextButton {
+
+            position: absolute;
+
+            height: 69px;
+
+            width: 41px;
+
+            top: 0;
+
+            bottom: 0;
+
+            left: 940px;
+
+            margin: auto 0;
+
+            border: 0 solid white;
+
+            background-color: transparent;
+
+            z-index: 2;
+
+        }
+
+
+
+        #nextButton a {
+
+            font-size: 80px;
+
+            color: white;
+
+            opacity: .7;
+
+        }
+
+
+
+        #nextButton a:hover {
+
+            opacity: 1;
+
+        }
+
+
+
+        #dots {
+
+            position: absolute;
+
+            height: 20px;
+
+            width: 180px;
+
+            display: flex;
+
+            left: 0;
+
+            right: 0;
+
+            margin: 0 auto;
+
+            bottom: 20px;
+
+            justify-content: space-between;
+
+            z-index: 2;
+
+        }
+
+
+
+        #dots a {
+
+            width: 20px;
+
+            height: 20px;
+
+            background-color: #fff;
+
+            border-radius: 50%;
+
+            opacity: .5;
+
+        }
+
+
+
+        #dots a:hover {
+
+            opacity: 1;
+
+        }
+
+
+
+        #dots .activeDot {
+
+            opacity: 1;
+
+        }
+
+
+
+        #roster {
+
+            position: relative;
+
+            margin-left: 1000px;
+
+        }
+
+
+
+        #names {
+
+            line-height: 666px;
+
+            text-align: center;
+
+        }
+
+
+
+        #names li {
+
+            width: 685px;
+
+            height: 666px;
+
+            background-color: rgb(219, 219, 144);
+
+            position: absolute;
+
+            font-size: 150px;
+
+            font-family: cursive;
+
+            color: red;
+
+        }
+
+
+
+        .topName {
+
+            z-index: 1;
+
+        }
+
+
+
+        .whyLearn {
+
+            height: 600px;
+
+            display: flex;
+
+            justify-content: space-around;
+
+            align-items: center;
+
+            margin: 30px;
+
+        }
+
+
+
+        .whyLearn div {
+
+            width: 720px;
+
+            height: 406px;
+
+            box-shadow: 10px 10px rgba(0, 0, 0, .3);
+
+            color: white;
+
+            background-color: #5f5750;
+
+        }
+
+
+
+        .whyLearn p {
+
+            font-size: 20px;
+
+            margin-top: 10px;
+
+            margin-left: 10px;
+
+        }
+
+
+
+        .video video {
+
+            display: block;
+
+            width: 1692px;
+
+            margin: 0px auto;
+
+        }
+
+
+
+        .blackboard {
+
+            height: 800px;
+
+        }
+
+
+
+        .blackboard-left {
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-evenly;
+
+            height: 820px;
+
+            width: 846px;
+
+            float: left;
+
+            background-image: url('../resource/img/blackboard.jpg');
+
+            color: white;
+
+            font-size: 30px;
+
+        }
+
+
+
+        .blackboard-right {
+
+            height: 820px;
+
+            width: 838px;
+
+            background-color: #bfa;
+
+            float: left;
+
+            background-image: url('../resource/img/blackboard.jpg');
+
+            color: white;
+
+        }
+
+
+
+        .blackboard-left p {
+
+            margin-left: 60px;
+
+        }
+
+
+
+        .blackboard-right p {
+
+            font-size: 45px;
+
+            margin: 50px 80px;
+
+        }
+
+
+
+        .loop {
+
+            color: orange
+
+        }
+
+    </style>
+
+
+
+    <script>
+
+        window.onload = function () {
+
+            const li = document.getElementsByTagName('li')
+
+            const dots = document.querySelectorAll('ul a')
+
+            const arrDots = Array.from(dots)
+
+            function next(direction) {
+
+                const topImg = document.querySelector('.topImg')
+
+                let nextImg
+
+                if (direction === 'next') {
+
+                    nextImg = topImg.nextElementSibling || li[0]
+
+                } else if (direction === 'prev') {
+
+                    nextImg = topImg.previousElementSibling || li[li.length - 1]
+
+                } else if (typeof direction === 'number') {
+
+                    nextImg = li[index]
+
+                }
+
+                topImg.classList.remove('topImg')
+
+                nextImg.classList.add('topImg')
+
+
+
+                const activeDot = document.getElementsByClassName('activeDot')[0]
+
+                let nextDot
+
+                if (direction === 'next') {
+
+                    nextDot = activeDot.nextElementSibling || dots[0]
+
+                } else if (direction === 'prev') {
+
+                    nextDot = activeDot.previousElementSibling || dots[dots.length - 1]
+
+                } else if (typeof direction === 'number') {
+
+                    nextDot = dots[index]
+
+                }
+
+                activeDot.classList.remove('activeDot')
+
+                nextDot.classList.add('activeDot')
+
+            }
+
+
+
+            function auto() {
+
+                timer = setInterval(function () {
+
+                    next('next')
+
+                }, 2000)
+
+            }
+
+            auto()
+
+
+
+            container.addEventListener('mouseenter', () => {
+
+                clearInterval(timer)
+
+            })
+
+            container.addEventListener('mouseleave', () => {
+
+                auto()
+
+            })
+
+
+
+            nextButton.onclick = function () {
+
+                next('next')
+
+            }
+
+            prevButton.onclick = function () {
+
+                next('prev')
+
+            }
+
+
+
+            document.addEventListener('click', event => {
+
+                if (arrDots.includes(event.target)) {
+
+                    index = arrDots.indexOf(event.target)
+
+                    next(index)
+
+                }
+
+            })
+
+
+
+            const rosterLi = document.querySelectorAll('#names li')
+
+            const names = document.getElementById('names')
+
+            const roster = (function () {
+
+                let timer1 = null
+
+                return function () {
+
+                    if (timer1 === null) {
+
+                        timer1 = setTimeout(function fn() {
+
+                            const num = Math.floor(Math.random() * rosterLi.length)
+
+                            const topName = document.querySelector('.topName')
+
+                            const nextName = topName.nextElementSibling || rosterLi[num]
+
+                            topName.classList.remove('topName')
+
+                            nextName.classList.add('topName')
+
+                            console.log(nextName)
+
+                            timer1 = setTimeout(fn, 1)
+
+                        }, 1)
+
+                    } else {
+
+                        clearTimeout(timer1)
+
+                        timer1 = null
+
+                    }
+
+                }
+
+            })()
+
+            names.addEventListener('click', () => {
+
+                roster()
+
+                timer2 = setTimeout(function () {
+
+                    roster()
+
+                }, 3000)
+
+            })
+
+
+
+        }
+
+
+
+    </script>
+
+</head>
+
+
+
+<body>
+
+    <div id="topbar">
+
+        <a href="javascript:;">
+
+            <img src="../resource/img/二十topbar.jpeg" alt="二十">
+
+        </a>
+
+        <a href="javascript:;">
+
+            <div> 海南学院附属第一小学 • 二年级十班</div>
+
+            <div class="letter"> YIXIAO AFFILIATED TO BINZHOU COLLAGE • CLASS TEN GRADE TWO</div>
+
+        </a>
+
+    </div>
+
+
+
+    <div id="container">
+
+        <ul>
+
+            <li class="topImg">
+
+                <img src="../resource/img/二十0.jpg">
+
+            </li>
+
+            <li>
+
+                <img src="../resource/img/二十1.jpg">
+
+            </li>
+
+            <li>
+
+                <img src="../resource/img/二十2.jpg">
+
+            </li>
+
+            <li>
+
+                <img src="../resource/img/二十3.jpg">
+
+            </li>
+
+            <li>
+
+                <img src="../resource/img/二十4.jpg">
+
+            </li>
+
+            <li>
+
+                <img src="../resource/img/二十5.jpg">
+
+            </li>
+
+        </ul>
+
+
+
+        <div id="buttons">
+
+            <button id="prevButton">
+
+                <a href="javascript:;"> &lt; </a>
+
+            </button>
+
+            <button id="nextButton">
+
+                <a href="javascript:;"> &gt; </a>
+
+            </button>
+
+        </div>
+
+
+
+        <ul id="dots">
+
+            <a class="activeDot" href="javascript:;"></a>
+
+            <a href="javascript:;"></a>
+
+            <a href="javascript:;"></a>
+
+            <a href="javascript:;"></a>
+
+            <a href="javascript:;"></a>
+
+            <a href="javascript:;"></a>
+
+        </ul>
+
+        <div id="roster">
+
+            <ul id="names">
+
+                <a href="javascript:;">
+
+                    <li class="topName">李晨</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>王以</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>赵一</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>袁伯</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>王若</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>苏尚</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>张轩</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>张浩</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>邵泽</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>苏淼</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>郑阳</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>李芃</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>樊辰</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>闫铄</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>崔宸</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>缪</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>魏云</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>郭铠硕</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>单俊</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>刘阳</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>宋瀚</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>王睿</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>崔博</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>韩远卓</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>刁毅</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>刁科政</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>王明</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>田潇</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>李彤</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>郭芷</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>袁</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>王诗</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>刘乙</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>朱宸</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>赵冰</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>张羽</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>家怡</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>佳琪</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>芊羽</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>刘心</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>苏羽</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>王萱</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>高佳</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>石芮</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>朱钰</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>袁煊</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>高溪</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>胡彤</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>程涵</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>刘瑜</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>林琪</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>张泽</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>闫晨</li>
+
+                </a>
+
+                <a href="javascript:;">
+
+                    <li>盛然</li>
+
+                </a>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+
+
+
+    <div class="whyLearn">
+
+        <div>
+
+            <p>我们为什么学习英语？</p>
+
+            <p>一 世界各国的经典名著，重要文献大多都翻译成英语或发表在英文期刊，英语是我们获取更多更广更深知识的不二选择</p>
+
+            <p>二 英语事实上已经成为世界通用语言，掌握英语更便于与世界其它国家的人交流的最优解</p>
+
+            <p>三 工业革命以来西方综合实力领先，很多领域的规则都是以英语的形式制定和发布，掌握英语是我们掌握更多工具获取更多前沿资讯的必经之路。例如：计算机语言的底层全部是英文</p>
+
+            <p>四 随着我国综合国力的不断提升，涉外经济不断增加，英语是我们把握更多机遇的必要工具</p>
+
+            <p>五 考试入学，事业发展英语都是重要的必选项</p>
+
+        </div>
+
+        <div>
+
+            <p>学习英语常见的几个误解</p>
+
+            <p>误区一：英语是英美国家的语言</p>
+
+            <p>正解：就像北京不只是北京人的北京，而是全国人的北京一样，英语也不只是英美的英语。英语已经成为全世界的语言，各个国家的很多知识都存储在英语中，英语目前是学习这些知识的最优工具</p>
+
+            <p>误区二：英语是一种知识</p>
+
+            <p>正解：英语本身不是知识，只是一种工具，是我们学习前沿知识和与世界交流的工具，工具通过使用而熟练</p>
+
+            <p>误区三：英美国家的乞丐都能学会英语，英语很简单</p>
+
+            <p>正解：任何人都能掌握自己的母语，但非母语环境下的学习方法是不同的，要通过长期的积累和使用才能掌握，非一朝一夕之功</p>
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <div class="video">
+
+        <video src="../resource/video/one little finger.mp4" controls></video>
+
+    </div>
+
+
+
+    <div class="blackboard">
+
+        <div class="blackboard-left">
+
+            <p class="loop">One little finger, one little finger, one little finger </p>
+
+            <p class="loop"> Tap-tap-tap</p>
+
+            <p class="loop"> Point your finger up, point your finger down</p>
+
+            <p class="loop"> Put it on your head, head (nose,chin,arm,leg,foot)</p>
+
+            <!-- <hr> -->
+
+            <p>Put it on your foot, foot </p>
+
+            <p>Put it on your leg, leg </p>
+
+            <p> Put it on your arm, arm</p>
+
+            <p> Put it on your chin, chin</p>
+
+            <p> Put it on your nose, nose</p>
+
+            <p> Put it on your head, head</p>
+
+            <p> Now, lets wave goodbye</p>
+
+            <p> Goodbye</p>
+
+        </div>
+
+        <div class="blackboard-right">
+
+            <p>finger : 手指</p>
+
+            <p>head : 头</p>
+
+            <p>nose : 鼻子</p>
+
+            <p>chin : 下巴</p>
+
+            <p>arm : 胳膊</p>
+
+            <p>leg : 腿</p>
+
+            <p>foot : 脚</p>
+
+        </div>
+
+    </div>
+
+</body>
+
+
+
+</html>
