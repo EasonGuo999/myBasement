@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+
+    <style>
+
+        body {
+
+            perspective: 800px;
+
+        }
+
+
+
+        .cube {
+
+            width: 400px;
+
+            height: 400px;
+
+            margin: 200px auto;
+
+            transform-style: preserve-3d;
+
+            animation:cube 2s infinite;
+
+        }
+
+
+
+        .cube div {
+
+            width: 400px;
+
+            height: 400px;
+
+            position: absolute;
+
+        }
+
+
+
+        .cube img {
+
+            width: 400px;
+
+            height: 400px;
+
+            vertical-align: top;
+
+        }
+
+
+
+        .right {
+
+            transform: rotateY(90deg) translateZ(200PX)
+
+        }
+
+
+
+        .left {
+
+            transform: rotateY(-90deg) translateZ(200px);
+
+        }
+
+
+
+        .top {
+
+            transform: rotateX(90deg) translateZ(200PX);
+
+        }
+
+
+
+        .bottom {
+
+            transform: rotateX(-90deg) translateZ(200px);
+
+        }
+
+
+
+        .hind {
+
+            transform: rotateY(180deg) translateZ(200PX)
+
+        }
+
+
+
+        .fore {
+
+            transform: translateZ(200px)
+
+        }
+
+
+
+        @keyframes cube {
+
+            from {
+
+                transform: rotateX(0deg) rotateY(0deg)
+
+            }
+
+
+
+            to {
+
+                transform: rotateX(360deg) rotateY(360deg)
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+    <div class="cube">
+
+        <div class="right">
+
+            <img src="../resource/img/ziyou2.jpg">
+
+        </div>
+
+        <div class="left">
+
+            <img src="../resource/img/ziyou6.jpg">
+
+        </div>
+
+        <div class="top">
+
+            <img src="../resource/img/ziyou3.jpg">
+
+        </div>
+
+        <div class="bottom">
+
+            <img src="../resource/img/ziyou4.jpg">
+
+        </div>
+
+        <div class="hind">
+
+            <img src="../resource/img/ziyou5.jpg">
+
+        </div>
+
+        <div class="fore">
+
+            <img src="../resource/img/ziyou1.png">
+
+        </div>
+
+    </div>
+
+</body>
+
+
+
+</html>
