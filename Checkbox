@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+
+    <script>
+
+        window.onload = function () {
+
+            const hobbies = document.getElementsByName('hobbies')
+
+            const checkall = document.getElementById('check-all')
+
+            //全选
+
+            const all = document.getElementById('all')
+
+            all.onclick = function () {
+
+                for (att of hobbies) {
+
+                    att.checked = true
+
+                }
+
+                checkall.checked=true
+
+            }
+
+
+
+            //取消
+
+            const cancel = document.getElementById('cancel')
+
+            cancel.onclick = function () {
+
+                for (att of hobbies) {
+
+                    att.checked = false
+
+                }
+
+                checkall.checked=false
+
+            }
+
+
+
+            //反选
+
+            const reverse = document.getElementById('reverse')
+
+            //方法一 用if/else取反
+
+            reverse.onclick = function () {
+
+                let result=0
+
+                for (let i = 0; i < hobbies.length; i++) {
+
+                    if (hobbies[i].checked === true) {
+
+                        hobbies[i].checked = false
+
+                    } else {
+
+                        hobbies[i].checked = true
+
+                    }
+
+                     result +=hobbies[i].checked
+
+                     //加一个判断，使得反选与所有同步
+
+                    if(result === hobbies.length){
+
+                        checkall.checked=true
+
+                    }else if(result===0 ){
+
+                        checkall.checked=false
+
+                    }
+
+
+
+                }
+
+            }
+
+            //方法二 用!取反
+
+            // reverse.onclick=function(){
+
+            //     for(let i=0;i<hobbies.length;i++){
+
+            //         hobbies[i].checked=!hobbies[i].checked
+
+            //     }
+
+            //加一个判断，使得反选与所有同步
+
+            //     const result=document.querySelectorAll('[name=hobbies]:checked')
+
+            //         if(result.length===hobbies.length){
+
+            //             checkall.checked=true
+
+            //         }else{
+
+            //             checkall.checked=false
+
+            //         }
+
+            //      }
+
+
+
+            //提交
+
+            //方法一 if条件句
+
+            const submit = document.getElementById('submit')
+
+            submit.onclick = function () {
+
+                for (att of hobbies) {
+
+                    if (att.checked) {
+
+                        alert(att.value)
+
+                    }
+
+                }
+
+            }
+
+            //方法二  与运算符
+
+            submit.onclick = function () {
+
+                for (att of hobbies) {
+
+                    att.checked && alert(att.value)
+
+                }
+
+            }
+
+            //大checkbox和小checkbox绑定
+
+           
+
+            checkall.onclick = function () {
+
+                for (let i = 0; i < hobbies.length; i++) {
+
+                    hobbies[i].checked = checkall.checked
+
+                }
+
+            }
+
+
+
+            //大checkbox和小checkbox反向绑定
+
+            //方法一
+
+            for (let j = 0; j < hobbies.length; j++) {
+
+                hobbies[j].onchange = function () {
+
+                    var result=1
+
+                    for (let i = 0; i < hobbies.length; i++) {
+
+                        result=hobbies[i].checked * result
+
+                    }
+
+                        if (result != 0) {
+
+                            checkall.checked = true
+
+                        }else{
+
+                            checkall.checked = false
+
+                        }
+
+                }
+
+            }
+
+            //方法二
+
+            for (let j = 0; j < hobbies.length; j++) {
+
+                hobbies[j].onchange = function () {
+
+                    const result=document.querySelectorAll('[name=hobbies]:checked')
+
+                    if(result.length===hobbies.length){
+
+                        checkall.checked=true
+
+                    }else{
+
+                        checkall.checked=false
+
+                    }
+
+                }
+
+            }
+
+
+
+            //把所有和全选以及取消绑定
+
+
+
+
+        }
+
+    </script>
+
+</head>
+
+
+
+<body>
+
+    请选择你的爱好：<input type="checkbox" id="check-all">所有
+
+    <br>
+
+    <input type="checkbox" name="hobbies" value='ping-pang'>乒乓球
+
+    <input type="checkbox" name="hobbies" value='basketball'>篮球
+
+    <input type="checkbox" name="hobbies" value='badminton'>羽毛球
+
+    <input type="checkbox" name="hobbies" value='football'>足球
+
+    <br>
+
+    <button type="button" id="all">全选</button>
+
+    <button type="button" id="cancel">取消</button>
+
+    <button type="button" id="reverse">反选</button>
+
+    <button type="button" id="submit">提交</button>
+
+</body>
+
+
+
+</html>
