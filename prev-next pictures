@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+
+    <style>
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            list-style: none;
+
+            text-decoration: none;
+
+        }
+
+
+
+        #container {
+
+            width: 500px;
+
+            height: 667px;
+
+            margin: 150px;
+
+            position: relative;
+
+        }
+
+
+
+        li {
+
+            position: absolute;
+
+        }
+
+
+
+        img {
+
+            width: 500px;
+
+        }
+
+
+
+        .topImg {
+
+            z-index: 1;
+
+        }
+
+
+
+        #prevButton {
+
+            position: absolute;
+
+            height: 69px;
+
+            width: 41px;
+
+            top: 0;
+
+            bottom: 0;
+
+            margin: auto 0;
+
+            border: 0 solid white;
+
+            background-color: transparent;
+
+            z-index: 2;
+
+        }
+
+
+
+        #prevButton a {
+
+            font-size: 60px;
+
+            color: white;
+
+            opacity: .7;
+
+        }
+
+
+
+        #prevButton a:hover {
+
+            opacity: 1;
+
+        }
+
+
+
+        #nextButton {
+
+            position: absolute;
+
+            height: 69px;
+
+            width: 41px;
+
+            top: 0;
+
+            bottom: 0;
+
+            right: 0;
+
+            margin: auto 0;
+
+            border: 0 solid white;
+
+            background-color: transparent;
+
+            z-index: 2;
+
+        }
+
+
+
+        #nextButton a {
+
+            font-size: 60px;
+
+            color: white;
+
+            opacity: .7;
+
+        }
+
+
+
+        #nextButton a:hover {
+
+            opacity: 1;
+
+        }
+
+
+
+        #dots {
+
+            position: absolute;
+
+            height: 20px;
+
+            width: 180px;
+
+            display: flex;
+
+            left: 0;
+
+            right: 0;
+
+            margin: 0 auto;
+
+            bottom: 0;
+
+            justify-content: space-between;
+
+            z-index: 2;
+
+        }
+
+
+
+        #dots a {
+
+            width: 20px;
+
+            height: 20px;
+
+            background-color: #fff;
+
+            border-radius: 50%;
+
+            opacity: .5;
+
+        }
+
+
+
+        #dots a:hover {
+
+            opacity: 1;
+
+        }
+
+
+
+        #dots .activeDot {
+
+            opacity: 1;
+
+        }
+
+    </style>
+
+
+
+    <script>
+
+        window.onload = function () {
+
+            const li = document.getElementsByTagName('li')
+
+            const dots = document.querySelectorAll('ul a')
+
+            const arrDots = Array.from(dots)
+
+
+
+            //next函数
+
+            function next(direction) {
+
+                const topImg = document.querySelector('.topImg')
+
+                let nextImg
+
+                if (direction === 'next') {
+
+                    nextImg = topImg.nextElementSibling || li[0]
+
+                } else if (direction === 'prev') {
+
+                    nextImg = topImg.previousElementSibling || li[li.length - 1]
+
+                } else if (typeof direction === 'number') {
+
+                    nextImg = li[index]
+
+                }    
+
+                topImg.classList.remove('topImg')
+
+                nextImg.classList.add('topImg')
+
+
+
+                const activeDot = document.getElementsByClassName('activeDot')[0]
+
+                let nextDot
+
+                if (direction === 'next') {
+
+                    nextDot = activeDot.nextElementSibling || dots[0]
+
+                } else if (direction === 'prev') {
+
+                    nextDot = activeDot.previousElementSibling || dots[dots.length - 1]
+
+                } else if (typeof direction === 'number') {
+
+                    nextDot = dots[index]
+
+                }
+
+                activeDot.classList.remove('activeDot')
+
+                nextDot.classList.add('activeDot')
+
+            }
+
+
+
+            //定时器函数
+
+            function auto() {
+
+                timer = setInterval(function () {
+
+                  next('next')
+
+                }, 1000)
+
+            }
+
+
+
+            //功能一：自动播放
+
+            auto()
+
+
+
+            //功能二：鼠标移入移出事件
+
+            container.addEventListener('mouseenter', () => {
+
+                clearInterval(timer)
+
+            })
+
+            container.addEventListener('mouseleave', () => {
+
+                auto()
+
+            })
+
+
+
+            //功能三：左右按钮点击事件
+
+            nextButton.onclick = function () {
+
+               next('next')
+
+            }
+
+            prevButton.onclick = function () {
+
+                next('prev')
+
+            }
+
+
+
+            //功能四：圆点点击事件
+
+            document.addEventListener('click', event => {
+
+                if (arrDots.includes(event.target)) {
+
+                    index = arrDots.indexOf(event.target)
+
+                    next(index)
+
+                }
+
+            })
+
+        }
+
+
+
+    </script>
+
+</head>
+
+
+
+<body>
+
+    <div id="container">
+
+        <ul id="imgs">
+
+            <li class="topImg">
+
+                <img src="../resource/img/ziyou1.jpg">
+
+            </li>
+
+            <li>
+
+                <img src="../resource/img/ziyou2.jpg">
+
+            </li>
+
+            <li>
+
+                <img src="../resource/img/ziyou3.jpg">
+
+            </li>
+
+            <li>
+
+                <img src="../resource/img/ziyou4.jpg">
+
+            </li>
+
+            <li>
+
+                <img src="../resource/img/ziyou5.jpg">
+
+            </li>
+
+            <li>
+
+                <img src="../resource/img/ziyou6.jpg">
+
+            </li>
+
+        </ul>
+
+
+
+        <div id="buttons">
+
+            <button id="prevButton">
+
+                <a href="javascript:;"> &lt; </a>
+
+            </button>
+
+            <button id="nextButton">
+
+                <a href="javascript:;"> &gt; </a>
+
+            </button>
+
+        </div>
+
+
+
+        <ul id="dots">
+
+            <a class="activeDot" href="javascript:;"></a>
+
+            <a href="javascript:;"></a>
+
+            <a href="javascript:;"></a>
+
+            <a href="javascript:;"></a>
+
+            <a href="javascript:;"></a>
+
+            <a href="javascript:;"></a>
+
+        </ul>
+
+    </div>
+
+</body>
+
+
+
+</html>
